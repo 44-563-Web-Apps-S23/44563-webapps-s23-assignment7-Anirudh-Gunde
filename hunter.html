@@ -1,155 +1,195 @@
 <!DOCTYPE html>
-<html> <head> <title>Work on DOMs and Callbacks</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-      
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
-  integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<html>
 
-<style>
-   p {
-      
+<head>
+  <title>Work on DOMs and Callbacks</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+
+  <style>
+    p {
+
       background-color: rgb(123, 114, 114);
-      font-family:'Franklin Gothic Medium', 'Arial Narcol-2', Arial, sans-serif;
-        font-size: 100%;
-        border: 2px solid rgb(2, 29, 13);
-        padding: 2px;
-  }
-  #bushes {
-      
+      font-family: 'Franklin Gothic Medium', 'Arial Narcol-2', Arial, sans-serif;
+      font-size: 100%;
+      border: 2px solid rgb(2, 29, 13);
+      padding: 2px;
+    }
+
+    #bushes {
+
       background-color: rgb(0, 170, 255);
-      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-     font-size: 110%;
-     border: 2px solid rgb(7, 25, 28);
-     padding: 4px;
-  }
-  #penalty {
-      
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 110%;
+      border: 2px solid rgb(7, 25, 28);
+      padding: 4px;
+    }
+
+    #penalty {
+
       background-color: rgb(182, 61, 114);
-      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       font-size: 120%;
       border: 2px solid rgb(2, 13, 14);
-     padding: 4px;
-  }
-  #help {
-      
+      padding: 4px;
+    }
+
+    #help {
+
       background-color: rgb(107, 107, 15);
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 130%;
-        border: 2px solid rgb(1, 16, 18);
-        padding: 8px;
-       
-  }
-</style>
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 130%;
+      border: 2px solid rgb(1, 16, 18);
+      padding: 8px;
+
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container-fluid">
+  <div class="container-fluid">
     <h1>Find the mouse by Anirudh Gunde</h1>
     <p>Click on the bushes to search for
-        the mouse, beware the cat</p>
-    <p id = "bushes">Number of bushes checked is zero.</p>
-    
-    <p id = "penalty">Penalty is zero.</p>
-    <p>Click for help.</p>
-    <p id = "help">Help report</p>
+      the mouse, beware the cat</p>
+    <p id="bushes">Number of bushes checked is zero.</p>
+
+    <p id="penalty">Penalty is zero.</p>
+    <p onclick="help()">Click for help.</p>
+    <p id="help">Help report</p>
+    <!--<button type = "button" class="btn btn-success" onclick="Game_Restart()">New Game</button>-->
+  </div>
+
+
+  <div class="container">
+    <div class="d-flex">
+      <div><img id="img0" width=110 height=110 onclick="check(0)" src="REDbush.jpg"></div>
+      <div><img id="img1" width=110 height=110 onclick="check(1)" src="REDbush.jpg"></div>
+      <div><img id="img2" width=110 height=110 onclick="check(2)" src="REDbush.jpg"></div>
+      <div><img id="img3" width=110 height=110 onclick="check(3)" src="REDbush.jpg"></div>
+      <div><img id="img4" width=110 height=110 onclick="check(4)" src="REDbush.jpg"></div>
+      <div><img id="img5" width=110 height=110 onclick="check(5)" src="REDbush.jpg"></div>
+
     </div>
+  </div>
+  <div class="container">
+    <div class="d-flex">
+      <div><img id="img6" width=110 height=110 onclick="check(6)" src="REDbush.jpg"></div>
+      <div><img id="img7" width=110 height=110 onclick="check(7)" src="REDbush.jpg"></div>
+      <div><img id="img8" width=110 height=110 onclick="check(8)" src="REDbush.jpg"></div>
+      <div><img id="img9" width=110 height=110 onclick="check(9)" src="REDbush.jpg"></div>
+      <div><img id="img10" width=110 height=110 onclick="check(10)" src="REDbush.jpg"></div>
+      <div><img id="img11" width=110 height=110 onclick="check(11)" src="REDbush.jpg"></div>
 
 
-    <div class="container">
-        <div class="d-flex">
-        <div><img  id="img1" width=110 height=110  onclick="check(0)" src="REDbush.jpg"></div>
-        <div><img  id="img2" width=110 height=110  onclick="check(1)" src="REDbush.jpg"></div>
-        <div><img  id="img3" width=110 height=110  onclick="check(2)" src="REDbush.jpg"></div>
-        <div><img  id="img4" width=110 height=110  onclick="check(3)" src="REDbush.jpg"></div>
-        <div><img  id="img5" width=110 height=110  onclick="check(4)" src="REDbush.jpg"></div>
-        <div><img  id="img6" width=110 height=110  onclick="check(5)" src="REDbush.jpg"></div>
-         </div>
-      </div>
-      <div class="container">
-        <div class="d-flex">
-        <div><img  id="img7" width=110 height=110  onclick="check(6)" src="REDbush.jpg"></div>
-        <div><img  id="img8" width=110 height=110  onclick="check(7)" src="REDbush.jpg"></div>
-        <div><img  id="img9" width=110 height=110  onclick="check(8)" src="REDbush.jpg"></div>
-        <div><img  id="img10" width=110 height=110  onclick="check(9)" src="REDbush.jpg"></div>
-        <div><img  id="img11" width=110 height=110  onclick="check(10)" src="REDbush.jpg"></div>
-        <div><img  id="img12" width=110 height=110  onclick="check(11)" src="REDbush.jpg"></div>
-         </div>
-      </div>
-      <div class="container">
-        <div class="d-flex">
-        <div><img  id="img13" width=110 height=110  onclick="check(12)" src="REDbush.jpg"></div>
-        <div><img  id="img14" width=110 height=110  onclick="check(13)" src="REDbush.jpg"></div>
-        <div><img  id="img15" width=110 height=110  onclick="check(14)" src="REDbush.jpg"></div>
-        <div><img  id="img16" width=110 height=110  onclick="check(15)" src="REDbush.jpg"></div>
-        <div><img  id="img17" width=110 height=110  onclick="check(16)" src="REDbush.jpg"></div>
-        <div><img  id="img18" width=110 height=110  onclick="check(17)" src="REDbush.jpg"></div>
-         </div>
-      </div>
-      <div class="container">
-        <div class="d-flex">
-        <div><img  id="img19" width=110 height=110  onclick="check(18)" src="REDbush.jpg"></div>
-        <div><img  id="img20" width=110 height=110  onclick="check(19)" src="REDbush.jpg"></div>
-        <div><img  id="img21" width=110 height=110  onclick="check(20)" src="REDbush.jpg"></div>
-        <div><img  id="img22" width=110 height=110  onclick="check(21)" src="REDbush.jpg"></div>
-        <div><img  id="img23" width=110 height=110  onclick="check(22)" src="REDbush.jpg"></div>
-        <div><img  id="img24" width=110 height=110  onclick="check(23)" src="REDbush.jpg"></div>
-         </div>
-      </div>
-<script>
-
-const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img1", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24"];
+    </div>
+  </div>
+  <div class="container">
+    <div class="d-flex">
+      <div><img id="img12" width=110 height=110 onclick="check(12)" src="REDbush.jpg"></div>
+      <div><img id="img13" width=110 height=110 onclick="check(13)" src="REDbush.jpg"></div>
+      <div><img id="img14" width=110 height=110 onclick="check(14)" src="REDbush.jpg"></div>
+      <div><img id="img15" width=110 height=110 onclick="check(15)" src="REDbush.jpg"></div>
+      <div><img id="img16" width=110 height=110 onclick="check(16)" src="REDbush.jpg"></div>
+      <div><img id="img17" width=110 height=110 onclick="check(17)" src="REDbush.jpg"></div>
 
 
-let checkCount = 0;
-var penalty = 0;
-let lastCheck = 0;
-let mouseLocation = 13;
-let catLocation = 21;
-let gameOver = false;
+    </div>
+  </div>
+  <div class="container">
+    <div class="d-flex">
+      <div><img id="img18" width=110 height=110 onclick="check(18)" src="REDbush.jpg"></div>
+      <div><img id="img19" width=110 height=110 onclick="check(19)" src="REDbush.jpg"></div>
+      <div><img id="img20" width=110 height=110 onclick="check(20)" src="REDbush.jpg"></div>
+      <div><img id="img21" width=110 height=110 onclick="check(21)" src="REDbush.jpg"></div>
+      <div><img id="img22" width=110 height=110 onclick="check(22)" src="REDbush.jpg"></div>
+      <div><img id="img23" width=110 height=110 onclick="check(23)" src="REDbush.jpg"></div>
 
-function check(position)
-{
-  if(gameOver)
-  {
-    return
-  }
-  const id = ids[position];
-  const image = document.getElementById(id);
-  if(position==mouseLocation)
-  {
-    img.src="mouse.jpg";
-    gameOver=true;
-    penalty=penalty-3;
-  }
+    </div>
+  </div>
+  <script>
 
-  else if(position==catLocation)
-  {
-    img.src="bigcat.jpg";
-    gameOver=true;
-    penalty=penalty+4;
-  }
-  else 
-  {
-    img.src="REDbush.jpg";
-  }
-  checkCount++;
-  penalty++;
-  const bushes = document.getElementById("bushes");
-  bushes.textContent = `Number of bushes checked is`+checkCount;
-
-  
-  const penalty = document.getElementById("penalty");
-  penalty.textContent = 'Penalty is '+penalty;
-  lastCheck = position;
-
-}
-
-</script>
+    const ids = ["img0","img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23"];
 
 
-	</body>
-	</html>	
+
+    var checkCount = 0
+    var penalty = 0
+    var lastCheck = 0
+    var mouseLocation = 13
+    var catLocation = 21
+    let gameOver = false
+    function check(position) {
+      if (gameOver) {
+        return;
+      }
+      var id = ids[position]
+      img = document.getElementById(id);
+      if (position == mouseLocation) {
+        img.src = "mouse.jpg";
+        gameOver = true;
+        penalty -= 3;
+
+      }
+      else if (position == catLocation) {
+        img.src = "bigcat.jpg";
+        gameOver = true;
+        penalty += 4;
+      }
+      else {
+        img.src = "grass-2.jpg";
+      }
+      checkCount++;
+      penalty++;
+
+      document.getElementById("bushes").innerHTML = "Bushes checked is: " + checkCount;
+      document.getElementById("penalty").innerHTML = "penalty: " + penalty;
+      lastCheck = position;
+    }
+    function help() {
+      const mouseR = Math.floor(mouseLocation / 4);
+      const catR = Math.floor(catLocation / 4);
+
+      const catC = catLocation % 6;
+      const mouseC = mouseLocation % 6;
+
+      const lastRow = Math.floor(lastCheck / 4);
+      const lastCol = lastCheck % 6;
+
+      penalty = penalty + 2;
+      document.getElementById("penalty").innerHTML = "Penalty is " + penalty;
+
+      if ((Math.abs(mouseC - lastCol) <= 1) && Math.abs(mouseR - lastRow) <= 1 && (Math.abs(catR - mouseR) > 1 || Math.abs(catC - mouseC) > 1)) {
+        document.getElementById("help").innerHTML = "squeak";
+      }
+
+      else if ((Math.abs(catC - lastCol) <= 1) && ((Math.abs(catR - lastRow) <= 1)) && (Math.abs(catR - mouseR) > 1 || Math.abs(catC - mouseC) > 1)){
+        document.getElementById("help").innerHTML = "meow";
+      }
+      else {
+        document.getElementById("help").innerHTML = "sorry, no help available";
+      }
+    }
+    function Game_Restart() {
+      mouseLocation = Math.floor(Math.random() * 24)
+      catLocation = Math.floor(Math.random() * 24)
+      document.getElementById("bushes").innerHTML = "Bushes checked is 0"
+      document.getElementById("penalty").innerHTML = "Penalty is 0"
+      for (var i = 0; i <= 23; i++) {
+        document.getElementById(ids[i]).src = "REDbush.jpg"
+
+      }
+    }
+  </script>
+
+</body>
+
+</html>
